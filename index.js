@@ -45,9 +45,9 @@ function formatAttrs(attributes, opts) {
       key = (foreignNames.attributeNames[key] || key);
     }
     output += key;
-    if ((value !== null && value !== '') || opts.xmlMode) {
+    if ((value !== null && value !== '') || opts.xmlMode || opts.emptyAttrs) {
         output += '="' + (opts.decodeEntities ? entities.encodeXML(value) :
-                            value.replace(/\"/g, '&quot;')) + '"';
+                            String(value).replace(/\"/g, '&quot;')) + '"';
     }
   }
 
